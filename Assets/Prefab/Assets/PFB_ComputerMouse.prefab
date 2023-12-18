@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_ComputerMouse
       objectReference: {fileID: 0}
+    - target: {fileID: 6496329501819502696, guid: 90748cae5a728e845b9edda62b5629b5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1da6a6ba792c4392811a5cc58b9d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90748cae5a728e845b9edda62b5629b5, type: 3}
 --- !u!4 &4914505677122650936 stripped

@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_PoleRope
       objectReference: {fileID: 0}
+    - target: {fileID: 1924038250859667774, guid: 8a090cd7585cee542a338ec736ef3926,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1da6a6ba792c4392811a5cc58b9d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a090cd7585cee542a338ec736ef3926, type: 3}
 --- !u!4 &8206149317758158647 stripped

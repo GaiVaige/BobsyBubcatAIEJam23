@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_WaterCooler
       objectReference: {fileID: 0}
+    - target: {fileID: 7013543478710320478, guid: f80375012f203e14bb6b9b34f4862e0e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1da6a6ba792c4392811a5cc58b9d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f80375012f203e14bb6b9b34f4862e0e, type: 3}
 --- !u!4 &6593264258661506574 stripped

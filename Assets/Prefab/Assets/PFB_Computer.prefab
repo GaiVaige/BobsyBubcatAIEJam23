@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 5373952709961535552, guid: 090c0de2259ff654289e3789dc05744c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.039
+      value: 0.042
       objectReference: {fileID: 0}
     - target: {fileID: 5373952709961535552, guid: 090c0de2259ff654289e3789dc05744c,
         type: 3}
@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 5373952709961535552, guid: 090c0de2259ff654289e3789dc05744c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.203
+      value: -0.404
       objectReference: {fileID: 0}
     - target: {fileID: 5373952709961535552, guid: 090c0de2259ff654289e3789dc05744c,
         type: 3}
@@ -102,6 +102,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8967053575412849033, guid: 090c0de2259ff654289e3789dc05744c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1da6a6ba792c4392811a5cc58b9d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 090c0de2259ff654289e3789dc05744c, type: 3}
 --- !u!4 &5366022898909457446 stripped
@@ -117,6 +122,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8210784317058918963}
     m_Modifications:
+    - target: {fileID: 1550382766400831503, guid: 916755205c1cda64bbf3985d2fa4b825,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1da6a6ba792c4392811a5cc58b9d5, type: 2}
     - target: {fileID: 5163766326081512362, guid: 916755205c1cda64bbf3985d2fa4b825,
         type: 3}
       propertyPath: m_Name
@@ -200,7 +210,7 @@ PrefabInstance:
     - target: {fileID: 5426258170929455220, guid: 30a7fa729fb2a334790efd065df1ee9a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2565
+      value: -0.367
       objectReference: {fileID: 0}
     - target: {fileID: 5426258170929455220, guid: 30a7fa729fb2a334790efd065df1ee9a,
         type: 3}
@@ -210,7 +220,7 @@ PrefabInstance:
     - target: {fileID: 5426258170929455220, guid: 30a7fa729fb2a334790efd065df1ee9a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.0692
+      value: 0.084
       objectReference: {fileID: 0}
     - target: {fileID: 5426258170929455220, guid: 30a7fa729fb2a334790efd065df1ee9a,
         type: 3}
@@ -252,6 +262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_ComputerKeyboard
       objectReference: {fileID: 0}
+    - target: {fileID: 8676682229646019775, guid: 30a7fa729fb2a334790efd065df1ee9a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1da6a6ba792c4392811a5cc58b9d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30a7fa729fb2a334790efd065df1ee9a, type: 3}
 --- !u!4 &9172742709949331520 stripped
@@ -267,6 +282,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8210784317058918963}
     m_Modifications:
+    - target: {fileID: 1846182132643505339, guid: 33f47e104543ec94f937d6302aed5f67,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1da6a6ba792c4392811a5cc58b9d5, type: 2}
     - target: {fileID: 6846706962169718449, guid: 33f47e104543ec94f937d6302aed5f67,
         type: 3}
       propertyPath: m_Name
@@ -280,7 +300,7 @@ PrefabInstance:
     - target: {fileID: 9195254058428076815, guid: 33f47e104543ec94f937d6302aed5f67,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2673
+      value: -0.344
       objectReference: {fileID: 0}
     - target: {fileID: 9195254058428076815, guid: 33f47e104543ec94f937d6302aed5f67,
         type: 3}
@@ -290,7 +310,7 @@ PrefabInstance:
     - target: {fileID: 9195254058428076815, guid: 33f47e104543ec94f937d6302aed5f67,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.1779
+      value: -0.308
       objectReference: {fileID: 0}
     - target: {fileID: 9195254058428076815, guid: 33f47e104543ec94f937d6302aed5f67,
         type: 3}

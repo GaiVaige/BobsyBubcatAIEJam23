@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Projector
       objectReference: {fileID: 0}
+    - target: {fileID: 1361376298714217040, guid: 12da7d219b3412145a5e9560e5e89aec,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1da6a6ba792c4392811a5cc58b9d5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12da7d219b3412145a5e9560e5e89aec, type: 3}
 --- !u!4 &7634355591123814553 stripped
