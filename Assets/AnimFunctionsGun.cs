@@ -30,4 +30,10 @@ public class AnimFunctionsGun : MonoBehaviour
     {
         _pc._bc.enabled = false;
     }
+
+    public void KillPC()
+    {
+        UIManager ui = FindObjectOfType<UIManager>();
+        ui.PlayerIsDie();
+    }
 }
