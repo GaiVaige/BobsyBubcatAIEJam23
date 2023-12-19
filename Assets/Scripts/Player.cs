@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float moveSpeed;
     Vector3 moveDirection;
     Vector3 mousePosition;
+    [HideInInspector] public bool inUI;
 
     [Header("Camera Speed Settings")]
     float rotationX;
@@ -51,20 +52,26 @@ public class Player : MonoBehaviour
         canFire = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        inUI = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetInput();
-        DoMovement();
-        DoRotation();
 
-        if (canFire)
+        if (!inUI)
         {
-            if (Input.GetMouseButtonDown(0))
+
+            GetInput();
+            DoMovement();
+            DoRotation();
+
+            if (canFire)
             {
-                Fire();
+                if (Input.GetMouseButtonDown(0))
+                {
+                    Fire();
+                }
             }
         }
 

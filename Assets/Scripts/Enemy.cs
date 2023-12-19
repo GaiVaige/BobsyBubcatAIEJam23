@@ -24,12 +24,15 @@ public class Enemy : MonoBehaviour
     Vector3 moveDir;
     public float fireRange;
     public float enemyPostShootWaitTime;
+    public float bulletSpeed;
+    public int bulletDam;
 
     [Header("Basic State Checking Debugs")]
     public bool chasing;
     public bool waiting;
     public bool shooting;
     bool coolingDown;
+    public GameObject bulletToSpawn;
     
 
 
@@ -111,7 +114,12 @@ public class Enemy : MonoBehaviour
         if (shooting && !coolingDown)
         {
             UpdateRot();
-            Debug.Log("Fire!");
+            GameObject go = Instantiate(bulletToSpawn, this.transform);
+            Bullet b = go.GetComponent<Bullet>();
+            b.moveSpeed = bulletSpeed;
+            b.damage = bulletDam;
+            go.transform.rotation = this.transform.rotation;
+            go.transform.parent = null;
             coolingDown = true;
             StartCoroutine(EnemyWaitAfterShoot(enemyPostShootWaitTime));
 
@@ -130,7 +138,7 @@ public class Enemy : MonoBehaviour
 
     public void UpdateRot()
     {
-        transform.forward = transform.position - _pc.position;
+        transform.forward = _pc.position - transform.position;
     }
 
     public void CheckForLOS()

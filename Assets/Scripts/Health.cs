@@ -49,6 +49,10 @@ public class Health : MonoBehaviour
 
                 Destroy(this.gameObject);
             }
+            else if(this.gameObject.transform.root.tag == "Player")
+            {
+                FindObjectOfType<UIManager>().PlayerIsDie();
+            }
         }
 
 
