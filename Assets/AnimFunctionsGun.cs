@@ -10,12 +10,6 @@ public class AnimFunctionsGun : MonoBehaviour
         _pc = GetComponentInParent<Player>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Reload()
     {
         _pc.ReloadFun();

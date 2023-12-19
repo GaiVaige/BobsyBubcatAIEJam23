@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     [Header("Keycard Inventory")]
     public bool hasBlueKeycard;
     public bool hasRedKeycard;
+    public bool hasGreenKeycard;
 
     [Header("Object References")]
     public GameObject _playerCam;
@@ -160,6 +161,11 @@ public class Player : MonoBehaviour
         if(boolName == "hasBlueKeycard")
         {
             hasBlueKeycard = true;
+        }
+
+        if (boolName == "hasGreenKeycard")
+        {
+            hasGreenKeycard = true;
         }
     }
 

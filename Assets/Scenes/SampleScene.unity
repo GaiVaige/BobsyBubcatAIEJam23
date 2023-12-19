@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   inUI: 0
+  isDead: 0
   lookSpeed: 3
   lookXLimit: 90
   currentAmmo: 0
