@@ -45,7 +45,6 @@ public class Health : MonoBehaviour
                     kc.transform.rotation = this.transform.rotation;
                     kc.transform.parent = null;
                     hasKeyCard = false;
-                    Destroy(this.gameObject);
                 }
 
                 
