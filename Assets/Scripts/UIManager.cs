@@ -1,13 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     //references
     [Header("Reference Stuff")]
     public Health _playerHP;
+
     public Player _pc;
     public TextMeshProUGUI _hpText;
     public TextMeshProUGUI _ammoText;
@@ -15,27 +14,35 @@ public class UIManager : MonoBehaviour
     public GameObject _pauseUI;
     public GameObject _deathUI;
 
-
     public void Start()
     {
+        Debug.Log("_playerHP");
         _pauseUI.SetActive(false);
         _deathUI.SetActive(false);
     }
 
-
-    void Update()
+    private void Update()
     {
         _hpText.text = _playerHP.currentHealth.ToString();
         _ammoText.text = _pc.currentAmmo.ToString();
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _pc.inUI = true;
-            Time.timeScale = 0;
-            _hpUI.SetActive(false);
-            _pauseUI.SetActive(true);
+            if (_pauseUI.active)
+            {
+                _pc.inUI = true;
+                Time.timeScale = 1;
+                _hpUI.SetActive(true);
+                _pauseUI.SetActive(false);
+            }
+            else
+            {
+                _pc.inUI = false;
+                Time.timeScale = 0;
+                _hpUI.SetActive(false);
+                _pauseUI.SetActive(true);
+            }
         }
-
     }
 
     public void PlayerIsDie()
@@ -45,19 +52,13 @@ public class UIManager : MonoBehaviour
         _deathUI.SetActive(true);
     }
 
-    public void Resume()
-    {
-        //gtfgtd
-    }
-
     public void Quit()
     {
-        //fgdsrtgdg
+        Application.Quit();
     }
 
     public void Restart()
     {
-        //ffdgdsgdfg
+        Application.LoadLevel("Test");
     }
-
 }
