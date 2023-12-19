@@ -19,7 +19,7 @@ public class EnemyAnimEvent : MonoBehaviour
 
     public void Kill()
     {
-        Destroy(this.gameObject.transform.root.gameObject);
+        Destroy(this.gameObject.transform.parent.root.gameObject);
     }
 
     public void Shoot()
