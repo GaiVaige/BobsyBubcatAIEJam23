@@ -92,9 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 10
-  hasKeyCard: 1
-  keycardPrefab: {fileID: 5896069123405786628, guid: 7b3a00de3e5d37446be377cbbb258f99,
-    type: 3}
+  hasKeyCard: 0
+  keycardPrefab: {fileID: 0}
 --- !u!1001 &6422319193117507385
 PrefabInstance:
   m_ObjectHideFlags: 0
