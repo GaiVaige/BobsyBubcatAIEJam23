@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI _hpText;
     public TextMeshProUGUI _ammoText;
     public GameObject _hpUI;
+    public GameObject _creditsUI;
     public GameObject _pauseUI;
     public GameObject _deathUI;
 
@@ -18,6 +19,7 @@ public class UIManager : MonoBehaviour
     {
         _playerHP = _pc.GetComponent<Health>();
         Debug.Log("_playerHP");
+        _creditsUI.SetActive(false);
         _pauseUI.SetActive(false);
         _deathUI.SetActive(false);
     }
@@ -69,5 +71,19 @@ public class UIManager : MonoBehaviour
     public void Restart()
     {
         Application.LoadLevel("Test");
+    }
+
+    public void Credits()
+    {
+        if(_creditsUI.active)
+        {
+            _pauseUI.SetActive(true);
+            _creditsUI.SetActive(false);
+        }
+        else
+        {
+            _pauseUI.SetActive(false);
+            _creditsUI.SetActive(true);
+        }
     }
 }
