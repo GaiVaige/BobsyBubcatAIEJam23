@@ -55,27 +55,33 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (chasing)
-        {
-            anim.SetBool("Chasing", true);
-        }
-        else
-        {
-            anim.SetBool("Chasing", false);
-        }
 
-        if (shooting)
+        if (hp.currentHealth > 0)
         {
-            anim.SetTrigger("Shooting");
-        }
+            if (chasing)
+            {
+                anim.SetBool("Chasing", true);
+            }
+            else
+            {
+                anim.SetBool("Chasing", false);
+            }
 
-        if (waiting)
+            if (shooting)
+            {
+                anim.SetTrigger("Shooting");
+            }
+
+            if (waiting)
+            {
+                anim.ResetTrigger("Shooting");
+            }
+
+        }
+        else if (hp.currentHealth <= 0)
         {
             anim.ResetTrigger("Shooting");
-        }
-
-        if(hp.currentHealth <= 0)
-        {
+            anim.SetBool("Chasing", false);
             anim.SetTrigger("Dead");
         }
 
@@ -143,14 +149,7 @@ public class Enemy : MonoBehaviour
         if (shooting && !coolingDown)
         {
             UpdateRot();
-            GameObject go = Instantiate(bulletToSpawn, this.transform);
-            Bullet b = go.GetComponent<Bullet>();
-            b.moveSpeed = bulletSpeed;
-            b.damage = bulletDam;
-            go.transform.rotation = this.transform.rotation;
-            go.transform.parent = null;
-            coolingDown = true;
-            //StartCoroutine(EnemyWaitAfterShoot(enemyPostShootWaitTime));
+
 
         }
 
@@ -194,5 +193,16 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         coolingDown = false;
         
+    }
+
+    public void ShootGun()
+    {
+        GameObject go = Instantiate(bulletToSpawn, this.transform);
+        Bullet b = go.GetComponent<Bullet>();
+        b.moveSpeed = bulletSpeed;
+        b.damage = bulletDam;
+        go.transform.rotation = this.transform.rotation;
+        go.transform.parent = null;
+        coolingDown = true;
     }
 }
