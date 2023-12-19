@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
 
     public void Start()
     {
+        _playerHP = _pc.GetComponent<Health>();
         Debug.Log("_playerHP");
         _pauseUI.SetActive(false);
         _deathUI.SetActive(false);
@@ -23,25 +24,33 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            Resume();
+        }
         _hpText.text = _playerHP.currentHealth.ToString();
         _ammoText.text = _pc.currentAmmo.ToString();
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+    }
+    public void Resume()
+    {
+        if (_pauseUI.active)
         {
-            if (_pauseUI.active)
-            {
-                _pc.inUI = true;
-                Time.timeScale = 1;
-                _hpUI.SetActive(true);
-                _pauseUI.SetActive(false);
-            }
-            else
-            {
-                _pc.inUI = false;
-                Time.timeScale = 0;
-                _hpUI.SetActive(false);
-                _pauseUI.SetActive(true);
-            }
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            _pc.inUI = false;
+            Time.timeScale = 1;
+            _hpUI.SetActive(true);
+            _pauseUI.SetActive(false);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+            _pc.inUI = true;
+            Time.timeScale = 0;
+            _hpUI.SetActive(false);
+            _pauseUI.SetActive(true);
         }
     }
 
