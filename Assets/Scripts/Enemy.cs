@@ -15,8 +15,6 @@ public class Enemy : MonoBehaviour
     public Transform _pc;
     Vector3 _lastKnownPos;
     CharacterController _cc;
-    Animator anim;
-    Health hp;
 
     [Header("Enemy Settings")]
     public bool canSeePlayer;
@@ -47,9 +45,7 @@ public class Enemy : MonoBehaviour
         _cc = GetComponent<CharacterController>();
         canSeePlayer = false;
         _pc = FindObjectOfType<Player>().transform;
-        hp = GetComponent<Health>();
         _lastKnownPos = Vector3.zero;
-        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
