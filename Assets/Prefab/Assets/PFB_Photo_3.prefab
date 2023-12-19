@@ -101,9 +101,19 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 34242703343bd42428464db26bcc243e, type: 2}
     - target: {fileID: -1295335427962813164, guid: 61550641bc7feac4387d31d9a26a9509,
         type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1295335427962813164, guid: 61550641bc7feac4387d31d9a26a9509,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 34242703343bd42428464db26bcc243e, type: 2}
+    - target: {fileID: -107955116091867106, guid: 61550641bc7feac4387d31d9a26a9509,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -107955116091867106, guid: 61550641bc7feac4387d31d9a26a9509,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -113,6 +123,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SM_Photo_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6737462509245085280, guid: 61550641bc7feac4387d31d9a26a9509,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6737462509245085280, guid: 61550641bc7feac4387d31d9a26a9509,
         type: 3}
