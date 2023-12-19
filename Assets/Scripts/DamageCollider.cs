@@ -12,7 +12,7 @@ public class DamageCollider : MonoBehaviour
         hp = other.GetComponent<Health>();
 
 
-        if(hp != null && other.gameObject.tag != this.gameObject.tag)
+        if(hp != null && !other.CompareTag("Player"))
         {
             hp.ApplyDamage(damage);
         }

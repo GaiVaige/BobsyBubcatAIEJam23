@@ -12,6 +12,7 @@ public class AnimFunctionsGun : MonoBehaviour
 
     public void Reload()
     {
+
         _pc.ReloadFun();
     }
 
@@ -23,5 +24,10 @@ public class AnimFunctionsGun : MonoBehaviour
     public void CollAct()
     {
         _pc.TurnOnColl();
+    }
+
+    public void CollDeAct()
+    {
+        _pc._bc.enabled = false;
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 
@@ -86,7 +87,9 @@ public class Player : MonoBehaviour
 
             if(currentAmmo == 0)
             {
+
                 _anim.SetTrigger("Reload");
+
             }
         }
 
@@ -171,6 +174,7 @@ public class Player : MonoBehaviour
 
     public void ReloadFun()
     {
+
         currentAmmo = maxAmmo;
         _anim.ResetTrigger("Reload");
         canFire = true;
