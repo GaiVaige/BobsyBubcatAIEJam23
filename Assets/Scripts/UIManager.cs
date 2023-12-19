@@ -41,7 +41,6 @@ public class UIManager : MonoBehaviour
     public void PlayerIsDie()
     {
         _pc.inUI = true;
-        Time.timeScale = 0;
         _hpUI.SetActive(false);
         _deathUI.SetActive(true);
     }

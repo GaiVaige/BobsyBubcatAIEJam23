@@ -25,9 +25,8 @@ public class Player : MonoBehaviour
 
     [Header("Gun Settings")]
     public int currentAmmo;
-    public int maxAmmo;
-    bool outOfAmmo;
-    bool canFire;
+    public int maxAmmo = 2;
+    public bool canFire;
     public float DEBUGWAITTIMEGUN;
 
     [Header("Keycard Inventory")]
@@ -40,6 +39,7 @@ public class Player : MonoBehaviour
     CharacterController _cc;
     Animator _anim;
     public BoxCollider _bc;
+    Health _hp;
 
 
     // Start is called before the first frame update
@@ -47,12 +47,15 @@ public class Player : MonoBehaviour
     {
         _cc = GetComponent<CharacterController>();
         _pc = GetComponentInChildren<Camera>();
+        _anim = GetComponentInChildren<Animator>();
+        _hp = GetComponent<Health>();
         _playerCam = _pc.gameObject;
         _bc.enabled = false;
         canFire = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         inUI = false;
+        currentAmmo = maxAmmo;
     }
 
     // Update is called once per frame
@@ -70,9 +73,23 @@ public class Player : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Fire();
+                    if(currentAmmo != 0)
+                    {
+                        Fire();
+                    }
+
                 }
             }
+
+            if(currentAmmo == 0)
+            {
+                _anim.SetTrigger("Reload");
+            }
+        }
+
+        if(_hp.currentHealth <= 0)
+        {
+            Dead();
         }
 
     }
@@ -96,6 +113,15 @@ public class Player : MonoBehaviour
         moveDirection.y -= 9.8f;
 
         _cc.Move(moveDirection * Time.deltaTime);
+
+        if(moveDirection.x != 0 || moveDirection.z != 0)
+        {
+            _anim.SetBool("Running", true);
+        }
+        else
+        {
+            _anim.SetBool("Running", false);
+        }
     }
 
     public void DoRotation()
@@ -109,10 +135,9 @@ public class Player : MonoBehaviour
 
     public void Fire()
     {
-        Debug.Log("Fire");
+        _anim.SetTrigger("Shooting");
         canFire = false;
-        _bc.enabled = true;
-        StartCoroutine(testHold(DEBUGWAITTIMEGUN));
+        currentAmmo--;
 
 
     }
@@ -122,16 +147,6 @@ public class Player : MonoBehaviour
         _bc.enabled = _bc.enabled = false;
     }
 
-
-
-    //testing only
-    IEnumerator testHold(float waitTime)
-    {
-
-        yield return new WaitForSeconds(waitTime);
-        _bc.enabled = false;
-        canFire = true;
-    }
 
     public void setKeycardBool(string boolName)
     {
@@ -144,5 +159,29 @@ public class Player : MonoBehaviour
         {
             hasBlueKeycard = true;
         }
+    }
+
+    public void ReloadFun()
+    {
+        currentAmmo = maxAmmo;
+        _anim.ResetTrigger("Reload");
+        canFire = true;
+    }
+
+    public void TurnOnColl()
+    {
+        _bc.enabled = true;
+    }
+
+    public void DoneShoot()
+    {
+        _bc.enabled = false;
+        canFire = true;
+    }
+
+    public void Dead()
+    {
+        inUI = true;
+        _anim.SetTrigger("Dead");
     }
 }
