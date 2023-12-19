@@ -15,8 +15,6 @@ public class Enemy : MonoBehaviour
     public Transform _pc;
     Vector3 _lastKnownPos;
     CharacterController _cc;
-    Animator anim;
-    Health hp;
 
     [Header("Enemy Settings")]
     public bool canSeePlayer;
@@ -47,39 +45,12 @@ public class Enemy : MonoBehaviour
         _cc = GetComponent<CharacterController>();
         canSeePlayer = false;
         _pc = FindObjectOfType<Player>().transform;
-        hp = GetComponent<Health>();
         _lastKnownPos = Vector3.zero;
-        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (chasing)
-        {
-            anim.SetBool("Chasing", true);
-        }
-        else
-        {
-            anim.SetBool("Chasing", false);
-        }
-
-        if (shooting)
-        {
-            anim.SetTrigger("Shooting");
-        }
-
-        if (waiting)
-        {
-            anim.ResetTrigger("Shooting");
-        }
-
-        if(hp.currentHealth <= 0)
-        {
-            anim.SetTrigger("Dead");
-        }
-
-
         float pDist = Vector3.Distance(this.transform.position, _pc.position);
 
 
@@ -150,7 +121,7 @@ public class Enemy : MonoBehaviour
             go.transform.rotation = this.transform.rotation;
             go.transform.parent = null;
             coolingDown = true;
-            //StartCoroutine(EnemyWaitAfterShoot(enemyPostShootWaitTime));
+            StartCoroutine(EnemyWaitAfterShoot(enemyPostShootWaitTime));
 
         }
 
