@@ -9,6 +9,11 @@ public class Health : MonoBehaviour
     public int maxHealth;
 
 
+
+    [Header("Keycard Spawn Settings")]
+    public bool hasKeyCard;
+    public GameObject keycardPrefab;
+
     void Start()
     {
         currentHealth = maxHealth;   
@@ -17,5 +22,35 @@ public class Health : MonoBehaviour
     public void ApplyDamage(int dam)
     {
         currentHealth -= dam;
+    }
+
+
+    public void Update()
+    {
+        CheckForDeath();
+    }
+
+
+    public void CheckForDeath()
+    {
+
+        if(currentHealth <= 0)
+        {
+            if (this.gameObject.transform.root.tag != "Player")
+            {
+
+                if (hasKeyCard)
+                {
+                    GameObject kc = Instantiate(keycardPrefab, this.transform);
+                    kc.transform.rotation = this.transform.rotation;
+                    kc.transform.parent = null;
+                    hasKeyCard = false;
+                }
+
+                Destroy(this.gameObject);
+            }
+        }
+
+
     }
 }

@@ -29,6 +29,9 @@ public class Player : MonoBehaviour
     bool canFire;
     public float DEBUGWAITTIMEGUN;
 
+    [Header("Keycard Inventory")]
+    public bool hasBlueKeycard;
+    public bool hasRedKeycard;
 
     [Header("Object References")]
     public GameObject _playerCam;
@@ -121,5 +124,18 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         _bc.enabled = false;
         canFire = true;
+    }
+
+    public void setKeycardBool(string boolName)
+    {
+        if(boolName == "hasRedKeycard")
+        {
+            hasRedKeycard = true;
+        }
+
+        if(boolName == "hasBlueKeycard")
+        {
+            hasBlueKeycard = true;
+        }
     }
 }

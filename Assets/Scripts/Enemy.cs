@@ -16,16 +16,20 @@ public class Enemy : MonoBehaviour
     Vector3 _lastKnownPos;
     CharacterController _cc;
 
-    [Header("PlayerFollowSettings")]
+    [Header("Enemy Settings")]
     public bool canSeePlayer;
     public float checkDistance;
     bool playerInRangeOfCheck;
     public float moveSpeed;
     Vector3 moveDir;
+    public float fireRange;
+    public float enemyPostShootWaitTime;
 
     [Header("Basic State Checking Debugs")]
     public bool chasing;
     public bool waiting;
+    public bool shooting;
+    bool coolingDown;
     
 
 
@@ -44,38 +48,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Vector3 checkDir = _lastKnownPos - transform.position;
-        Debug.Log(checkDir.magnitude);
-
-        if (playerInRangeOfCheck)
-        {
-            CheckForLOS();
-        }
-
-        if (canSeePlayer)
-        {
-            UpdateRot();
-            _lastKnownPos = _pc.position;
-            moveDir = _lastKnownPos - transform.position;
-            chasing = true;
-            waiting = false;
-        }
+        float pDist = Vector3.Distance(this.transform.position, _pc.position);
 
 
-        if (chasing)
-        {
-            _cc.Move(moveDir * moveSpeed * Time.deltaTime);
-        }
-
-        if (checkDir.magnitude < 1)
-        {
-            chasing = false;
-            waiting = true;
-        }
-
-
-        if (Vector3.Distance(this.transform.position, _pc.position) <= checkDistance)
+        if (pDist <= checkDistance)
         {
             playerInRangeOfCheck = true;
         }
@@ -83,6 +59,66 @@ public class Enemy : MonoBehaviour
         {
             playerInRangeOfCheck = false;
         }
+
+        if(pDist <= fireRange)
+        {
+            chasing = false;
+            waiting = false;
+            shooting = true;
+        }
+        else
+        {
+            chasing = true;
+            waiting = false;
+            shooting = false;
+        }
+
+
+        Vector3 checkDir = _lastKnownPos - transform.position;
+        Debug.Log(checkDir.magnitude);
+
+
+        if (!shooting)
+        {
+            if (playerInRangeOfCheck)
+            {
+                CheckForLOS();
+            }
+
+            if (canSeePlayer)
+            {
+                UpdateRot();
+                _lastKnownPos = _pc.position;
+                moveDir = _lastKnownPos - transform.position;
+                chasing = true;
+            }
+
+
+            if (chasing)
+            {
+                waiting = false;
+                shooting = false;
+                _cc.Move(moveDir * moveSpeed * Time.deltaTime);
+            }
+
+            if (checkDir.magnitude < 1)
+            {
+                chasing = false;
+                waiting = true;
+            }
+        }
+
+        if (shooting && !coolingDown)
+        {
+            UpdateRot();
+            Debug.Log("Fire!");
+            coolingDown = true;
+            StartCoroutine(EnemyWaitAfterShoot(enemyPostShootWaitTime));
+
+        }
+
+
+
     }
 
 
@@ -113,5 +149,13 @@ public class Enemy : MonoBehaviour
             canSeePlayer = true;
             Debug.DrawRay(transform.position, _pc.position - transform.position, Color.green);
         }
+    }
+
+    public IEnumerator EnemyWaitAfterShoot(float waitTime)
+    {
+
+        yield return new WaitForSeconds(waitTime);
+        coolingDown = false;
+        
     }
 }
