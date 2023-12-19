@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DoorOpen : MonoBehaviour
 {
-    Animator _anim;
+    public Animator _anim;
     public bool redDoor;
     public bool blueDoor;
     public bool greenDoor;
