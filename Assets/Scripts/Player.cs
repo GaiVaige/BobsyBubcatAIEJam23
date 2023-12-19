@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     Vector3 moveDirection;
     Vector3 mousePosition;
     [HideInInspector] public bool inUI;
+    [HideInInspector] public bool isDead;
 
     [Header("Camera Speed Settings")]
     float rotationX;
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
         _playerCam = _pc.gameObject;
         _bc.enabled = false;
         canFire = true;
+        isDead = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         inUI = false;
@@ -183,5 +185,6 @@ public class Player : MonoBehaviour
     {
         inUI = true;
         _anim.SetTrigger("Dead");
+        isDead = true;
     }
 }
